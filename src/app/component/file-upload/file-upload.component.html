@@ -1,0 +1,25 @@
+
+<div  class="card flex flex-column align-items-center">
+  <p-toast></p-toast>
+  <p-fileUpload
+    class="custom-file-upload"
+    name="demo[]"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    (onUpload)="onUpload($event)"
+    [multiple]="true"
+    accept="image/*"
+    maxFileSize="1000000"
+    [showCancelButton]="false"
+    [showUploadButton]="false"
+    >
+    <ng-template pTemplate="toolbar">
+      <div class="pt-2 py-3 flex-center">Click here to upload a file upto 25 MB</div>
+    </ng-template>
+      <ng-template pTemplate="content">
+          <ul *ngIf="uploadedFiles.length">
+              <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+          </ul>
+      </ng-template>
+  </p-fileUpload>
+</div>
+
